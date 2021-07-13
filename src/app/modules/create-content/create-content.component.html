@@ -1,0 +1,94 @@
+<div class="container">
+    <p class="title">Create Content</p>
+
+    <form [formGroup]="contentForm">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label>
+                    <input type="checkbox"  (change)="isTomorrowUpdate=!isTomorrowUpdate"/>
+                    Tomorrow Update
+                </label>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Region</label>
+                <ng-select [items]="items" bindLabel="name" bindValue="id" formControlName="region"
+                    placeholder="Select Region" required>
+                </ng-select>
+                <div *ngIf="submitted && f.region.errors" class="invalid-feedback">
+                    <div *ngIf="f.region.errors.required">Region is required</div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>State</label>
+                <ng-select [items]="items" bindLabel="name" bindValue="id" formControlName="state"
+                    placeholder="Select State" required>
+                </ng-select>
+                <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                    <div *ngIf="f.state.errors.required">State is required</div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Status</label>
+                <div>
+                    <div *ngFor="let st of statusList; let i=index" formArrayName="status" class="status-control">
+                        <label>
+                            <input type="checkbox" [value]="st.name" (change)="onCheckboxChange($event,'status')"
+                                [ngClass]="{ 'is-invalid': submitted && f.status.errors }" />
+                            {{st.name}}
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                    <div *ngIf="f.status.errors.required">Status is required</div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label>Size</label>
+                <div>
+                    <div *ngFor="let st of sizeList; let i=index" formArrayName="size" class="status-control">
+                        <label>
+                            <input type="checkbox" [value]="st.name" (change)="onCheckboxChange($event,'size')"
+                                [ngClass]="{ 'is-invalid': submitted && f.size.errors }" />
+                            {{st.name}}
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+                    <div *ngIf="f.size.errors.required">Size is required</div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Plant Name</label>
+                <input type="text" formControlName="name" class="form-control input-style" placeholder="Enter your name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Phone Number<span class="show-info">(**If more than one phone number separate with
+                        comma(","))</span></label>
+                <input type="number" formControlName="phone" class="form-control input-style"
+                    placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Address</label>
+                <textarea formControlName="address" class="form-control" rows="4" placeholder="Enter Address"
+                    [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Information</label>
+                <textarea formControlName="info" class="form-control" rows="4" placeholder="Enter Infomation"
+                    [ngClass]="{ 'is-invalid': submitted && f.info.errors }"></textarea>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Remark</label>
+                <textarea formControlName="remark" class="form-control" rows="4" placeholder="Enter Remark"
+                    [ngClass]="{ 'is-invalid': submitted && f.remark.errors }"></textarea>
+            </div>
+            <div class="d-flex justify-content-end w-100">
+                <button class="btn btn-cancel">Cancel</button>
+                <button class="btn btn-create" (click)="onSubmit()">Create</button>
+            </div>
+        </div>
+
+    </form>
+</div>
