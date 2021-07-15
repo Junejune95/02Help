@@ -10,3 +10,17 @@
     color: #C60000;
 }
 
+
+.show-res {
+    background: green;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.spinner:before{
+    left: unset !important;
+    margin-left: 16px !important;
+}

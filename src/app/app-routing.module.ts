@@ -16,22 +16,22 @@ const routes: Routes = [
   {
     path: 'O2Help',
     component: HeaderNavComponent,
-    children:[
+    children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
         path: 'home',
         loadChildren: () => import('@modules/home/home.module')
-        .then(m => m.HomeModule),
+          .then(m => m.HomeModule),
       },
       {
         path: 'tomorrow-update',
         loadChildren: () => import('@modules/tomorrow-update/tomorrow-update.module')
-        .then(m => m.TomorrowUpdateModule),
+          .then(m => m.TomorrowUpdateModule),
       },
       {
         path: 'daily',
         loadChildren: () => import('@modules/daily/daily.module')
-        .then(m => m.DailyModule),
+          .then(m => m.DailyModule),
       },
     ]
   },
@@ -40,7 +40,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),],
   exports: [RouterModule,]
 })
 export class AppRoutingModule { }

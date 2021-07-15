@@ -1,27 +1,29 @@
 <div class="container">
     <p class="title">Create Content</p>
-
+    <div class="show-res" *ngIf="resultMessage">
+        {{resultMessage}}
+    </div>
     <form [formGroup]="contentForm">
         <div class="row">
             <div class="col-md-12 form-group">
                 <label>
-                    <input type="checkbox"  (change)="isTomorrowUpdate=!isTomorrowUpdate"/>
+                    <input type="checkbox" (change)="isTomorrowUpdate=!isTomorrowUpdate" [value]="isTomorrowUpdate"/>
                     Tomorrow Update
                 </label>
             </div>
             <div class="col-md-6 form-group">
                 <label>Region</label>
-                <ng-select [items]="items" bindLabel="name" bindValue="id" formControlName="region"
-                    placeholder="Select Region" required>
+                <ng-select [items]="regionList" bindLabel="name" bindValue="name" formControlName="region"
+                    (change)="onSelectedRegion()" placeholder="Select Region" required>
                 </ng-select>
                 <div *ngIf="submitted && f.region.errors" class="invalid-feedback">
                     <div *ngIf="f.region.errors.required">Region is required</div>
                 </div>
             </div>
             <div class="col-md-6 form-group">
-                <label>State</label>
-                <ng-select [items]="items" bindLabel="name" bindValue="id" formControlName="state"
-                    placeholder="Select State" required>
+                <label>Township</label>
+                <ng-select [items]="townshipList" bindLabel="name" bindValue="name" formControlName="state"
+                    placeholder="Select Township" required>
                 </ng-select>
                 <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
                     <div *ngIf="f.state.errors.required">State is required</div>
@@ -66,7 +68,7 @@
             <div class="col-md-6 form-group">
                 <label>Phone Number<span class="show-info">(**If more than one phone number separate with
                         comma(","))</span></label>
-                <input type="number" formControlName="phone" class="form-control input-style"
+                <input type="text" formControlName="phone" class="form-control input-style"
                     placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
             </div>
             <div class="col-md-6 form-group">
@@ -87,11 +89,13 @@
             <div class="col-md-12 mb-5 ">
                 <div class="d-flex justify-content-end w-100">
                     <button class="btn btn-cancel">Cancel</button>
-                    <button class="btn btn-create" (click)="onSubmit()">Create</button>
+                    <button class="btn btn-create" (click)="onSubmit()" [class.spinner]="isLoading" [disabled]="isLoading">Create</button>
                 </div>
             </div>
-            
+
         </div>
 
     </form>
+
+    <app-spinner-loading></app-spinner-loading>
 </div>

@@ -1,17 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from "@angular/forms";
-
+import { Subscription } from 'rxjs';
+import { CommonService } from "@core/services/common.service";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-content',
   templateUrl: './create-content.component.html',
   styleUrls: ['./create-content.component.css']
 })
-export class CreateContentComponent implements OnInit {
+export class CreateContentComponent implements OnInit, OnDestroy {
   public contentForm: FormGroup;
   public regionId: any;
   public stateId: any;
-  public submitted:boolean;
-  public isTomorrowUpdate:boolean;
+  public submitted: boolean;
+  public isTomorrowUpdate: boolean;
+  private sub: Subscription;
+  public regionList: any = [];
+  public townshipList: any = [];
+  public resultMessage: any;
+  public isLoading: boolean = false;
+
   public statusList: any = [
     {
       id: 1,
@@ -37,35 +45,28 @@ export class CreateContentComponent implements OnInit {
     },
 
   ];
-  items = [
-    { id: 1, name: 'Python' },
-    { id: 2, name: 'Node Js' },
-    { id: 3, name: 'Java' },
-    { id: 4, name: 'PHP' },
-    { id: 5, name: 'Django' },
-    { id: 6, name: 'Angular' },
-    { id: 7, name: 'Vue' },
-    { id: 8, name: 'ReactJs' },
-  ];
 
-  constructor(private formBuilder: FormBuilder,) { }
+
+  constructor(private formBuilder: FormBuilder, private _service: CommonService, private _router: Router,) { }
 
   ngOnInit(): void {
     this.contentForm = this.formBuilder.group({
-      region: ["", [Validators.required]],
-      state: ["", [Validators.required,]],
+      region: [null, [Validators.required]],
+      tommorrowUpdate: [""],
+      state: [null, [Validators.required,]],
       name: ["", [Validators.required]],
       status: this.formBuilder.array([], [Validators.required]),
       size: this.formBuilder.array([], [Validators.required]),
       info: [""],
       remark: [""],
-      phone:["", [Validators.required]],
+      phone: ["", [Validators.required]],
       address: ["", [Validators.required]],
     }
     );
+    this.getRegionList();
   }
 
-  onCheckboxChange(e,constrolname) {
+  onCheckboxChange(e, constrolname) {
     const checkArray: FormArray = this.contentForm.get(constrolname) as FormArray;
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
@@ -81,13 +82,60 @@ export class CreateContentComponent implements OnInit {
     }
   }
 
+  getRegionList() {
+    this.sub = this._service.getRegion()
+      .subscribe((res) => {
+        this.regionList = res;
+      })
+  }
+
   get f() { return this.contentForm.controls }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true
     if (this.contentForm.invalid) return;
     else {
-      console.log("fine anyway")
+      this.isLoading = true;
+      let value = this.contentForm.value;
+
+      let data = {
+        "regionName": value.region,
+        "townshipName": value.state,
+        "status": value.status,
+        "plantName": value.name,
+        "address": value.address,
+        "phoneNumber": value.phone,
+        "information": value.info,
+        "remark": value.remark,
+        "size": value.size,
+        "tomorrowUpdate": this.isTomorrowUpdate
+      };
+      this.sub = this._service.onCreateContent(data)
+        .subscribe((res: any) => {
+          this.isLoading = false;
+          this.resultMessage = res.message;
+          this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this._router.onSameUrlNavigation = 'reload';
+          this._router.navigate(['/create-content']);
+          this.contentForm.reset();
+          setTimeout(() => {
+            this.resultMessage = null;
+          }, 1000);
+
+        });
     }
   }
+
+  onSelectedRegion() {
+    let regionId = this.contentForm.value.region;
+    console.log(regionId);
+    this.sub = this._service.getTownship(regionId).subscribe((res) => {
+      this.townshipList = res;
+    })
+  }
+  ngOnDestroy() {
+    if (this.sub)
+      this.sub.unsubscribe();
+  }
+
 }
