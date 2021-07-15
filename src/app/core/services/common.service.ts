@@ -32,4 +32,9 @@ export class CommonService {
     let url = this.baseUrl + "/posts";
     return this.http.post(url, data)
   }
+
+  getContentList() {
+    let url = this.baseUrl + "/posts?regionName=Region1&townshipName=Town1"
+    return this.http.get<any>(url).pipe(map((obj) => obj || []));
+  }
 }

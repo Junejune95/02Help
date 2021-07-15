@@ -41,7 +41,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         .subscribe((res:any) => {
           this._route.navigateByUrl("O2Help/home");
           console.log(res.token)
-          localStorage.setItem("token",res.token)
+          localStorage.setItem("token",res.token),
+          localStorage.setItem("username",user.name),
+
           this.isLoading=false;
         })
 

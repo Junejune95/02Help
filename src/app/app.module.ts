@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, } from '@angular/common/http';
 
@@ -27,7 +27,7 @@ import { SpinnerLoadingComponent } from './modules/spinner-loading/spinner-loadi
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    // CommonModule,
+    CommonModule,
     HttpClientModule,
     NgSelectModule,
   ],

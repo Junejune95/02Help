@@ -8,12 +8,13 @@ import { Router } from "@angular/router";
 })
 export class HeaderNavComponent implements OnInit {
   public currentRoute: any = [];
-  public userData: any = {};
+  public userName: any ;
 
   constructor(private _route: Router) { }
 
   ngOnInit() {
     this.checkCurrenroute();
+    this.userName=localStorage.getItem('username');
   }
 
   directRoute(go) {
