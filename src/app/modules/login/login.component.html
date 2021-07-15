@@ -9,12 +9,13 @@
             </div>
             <div class="col-md-8 mx-auto form-group">
                 <label>Nick Name</label>
-                <input type="number" formControlName="name" class="form-control input-style"
-                    placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <input type="text" formControlName="name" class="form-control input-style"
+                    placeholder="Enter your nick name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
             </div>
             <div class="col-md-8 mx-auto mb-5 ">
-                <button class="btn btn-create w-100" (click)="onSubmit()">Create</button>
+                <button class="btn btn-create w-100" (click)="onSubmit()" [class.spinner]="isLoading" [disabled]="isLoading">Create</button>
             </div>
         </div>
     </form>
+   <app-spinner-loading></app-spinner-loading>
 </div>
