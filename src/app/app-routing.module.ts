@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from '@app/core/guards/auth-guard.service';
 import { CreateContentComponent } from '@modules/create-content/create-content.component';
 import { ErrorFoundComponent } from '@modules/error-found/error-found.component';
 import { HeaderNavComponent } from '@modules/header-nav/header-nav.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {
     path: 'create-content',
     component: CreateContentComponent,
+    
   },
   {
     path: 'login',
@@ -16,6 +18,8 @@ const routes: Routes = [
   {
     path: 'O2Help',
     component: HeaderNavComponent,
+    canActivate: [AuthGuardService],
+
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
@@ -30,6 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'daily',
+        
         loadChildren: () => import('@modules/daily/daily.module')
           .then(m => m.DailyModule),
       },

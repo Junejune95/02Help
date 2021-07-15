@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '@model/user';
 import { environment } from "@env/environment";
 
 @Injectable({
@@ -13,19 +12,14 @@ export class AuthenticationService {
   private baseUrl = environment.apiUrl;
 
   private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
-    return JSON.parse(localStorage.getItem('currentUser'));
-  }
+
 
   public get currentToken(): String {
-    return JSON.parse(localStorage.getItem('token'));
+    return localStorage.getItem('token');
   }
 
 
