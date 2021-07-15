@@ -46,4 +46,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  onLikePost(status,id){
+    this._service.onLikePost(id,status).subscribe((res)=>{
+      console.log(res);
+    })
+  }
 }

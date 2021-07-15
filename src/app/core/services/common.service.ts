@@ -33,6 +33,11 @@ export class CommonService {
     return this.http.post(url, data)
   }
 
+  onLikePost(id:any,status:String) {
+    let url = this.baseUrl + "/posts/"+id+"/"+status;
+    return this.http.put(url,{});
+  }
+
   getContentList() {
     let url = this.baseUrl + "/posts?regionName=Region1&townshipName=Town1"
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
