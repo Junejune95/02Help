@@ -1,0 +1,20 @@
+<div class="container">
+    <p class="title">Login</p>
+    <form [formGroup]="loginForm">
+        <div class="row">
+            <div class="col-md-8 mx-auto form-group">
+                <label>Phone Number</label>
+                <input type="number" formControlName="phoneNumber" class="form-control input-style"
+                    placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+            </div>
+            <div class="col-md-8 mx-auto form-group">
+                <label>Nick Name</label>
+                <input type="number" formControlName="name" class="form-control input-style"
+                    placeholder="Enter your phone" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            </div>
+            <div class="col-md-8 mx-auto mb-5 ">
+                <button class="btn btn-create w-100" (click)="onSubmit()">Create</button>
+            </div>
+        </div>
+    </form>
+</div>

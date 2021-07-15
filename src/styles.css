@@ -4,3 +4,25 @@
 .invalid-feedback {
     display: block !important;
 }
+
+p.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #C60000;
+    padding: 14px;
+}
+
+
+button.btn.btn-cancel {
+    background: #dedede;
+    color: #484747;
+    padding: 10px 20px;
+    margin-right: 20px;
+}
+
+button.btn.btn-create {
+    background: #C60000;
+    color: white;
+    padding: 10px 20px;
+}

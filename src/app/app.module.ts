@@ -9,12 +9,16 @@ import { AppComponent } from './app.component';
 import { CreateContentComponent } from './modules/create-content/create-content.component';
 import { ErrorFoundComponent } from './modules/error-found/error-found.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { LoginComponent } from './modules/login/login.component';
+import { HeaderNavComponent } from './modules/header-nav/header-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateContentComponent,
-    ErrorFoundComponent
+    ErrorFoundComponent,
+    LoginComponent,
+    HeaderNavComponent,
   ],
   imports: [
     BrowserModule,

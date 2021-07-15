@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand lbl-expand" href="#">Oxygen Help Myanmar</a>
+        <div class="d-flex justify-content-between toogler-wrapper" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+                ☰
+            </button>
+            <a class="navbar-brand" href="#">Oxygen Help Myanmar</a>
+            <button class="btn">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu userBox" aria-labelledby="userDropdown">
+                    <a class="dropdown-item"><i class="fa fa-user" aria-hidden="true"></i>
+                        &nbsp;&nbsp;&nbsp;Zon</a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"
+                            aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Logout</a>
+                </div>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" (click)="directRoute('O2Help/home')"
+                    [ngClass]='{"active":currentRoute[2]=="home"}'>
+                    <a class="nav-link">
+                        HOME
+                    </a>
+                </li>
+                <li class="nav-item" (click)="directRoute('O2Help/tomorrow-update')"
+                    [ngClass]='{"active":currentRoute[2]=="tomorrow-update"}'>
+                    <a class="nav-link">
+                        Tomorrow Update
+                    </a>
+                </li>
+                <li class="nav-item" (click)="directRoute('O2Help/daily')"
+                    [ngClass]='{"active":currentRoute[2]=="daily"}'>
+                    <a class="nav-link">
+                        Daily
+                    </a>
+                </li>
+            </ul>
+            <div class="dropdown user-dropDown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu userBox" aria-labelledby="userDropdown">
+                    <a class="dropdown-item"><i class="fa fa-user" aria-hidden="true"></i>
+                        &nbsp;&nbsp;&nbsp;Zon</a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" (click)="logout()"><i class="fa fa-power-off"
+                            aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container main-content">
+    <router-outlet></router-outlet>
+</div>

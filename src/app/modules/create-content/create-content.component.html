@@ -84,10 +84,13 @@
                 <textarea formControlName="remark" class="form-control" rows="4" placeholder="Enter Remark"
                     [ngClass]="{ 'is-invalid': submitted && f.remark.errors }"></textarea>
             </div>
-            <div class="d-flex justify-content-end w-100">
-                <button class="btn btn-cancel">Cancel</button>
-                <button class="btn btn-create" (click)="onSubmit()">Create</button>
+            <div class="col-md-12 mb-5 ">
+                <div class="d-flex justify-content-end w-100">
+                    <button class="btn btn-cancel">Cancel</button>
+                    <button class="btn btn-create" (click)="onSubmit()">Create</button>
+                </div>
             </div>
+            
         </div>
 
     </form>
