@@ -52,7 +52,7 @@ export class ContentsListComponent implements OnInit, OnDestroy {
   }
 
   getList(){
-    this.isLoading=true;
+    // this.isLoading=true;
     this.getContentList();
   }
 

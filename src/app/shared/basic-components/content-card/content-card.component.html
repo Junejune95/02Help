@@ -9,7 +9,6 @@
             <div class="d-flex flex-column align-items-start">
                 <div class="name">{{contentData.plantName}}</div>
                 <div class="date">{{contentData.createdAt | date :'M/d/yy, h:mm a'}}</div>
-
             </div>
             <div>
                 <div *ngFor="let size of contentData.size;let i=index" class="size">
@@ -17,15 +16,14 @@
                 </div>
             </div>
         </div>
-        <p class="info">
+        <p class="info" *ngIf="contentData.information">
             {{contentData.information}}
         </p>
-        <p class="info">
+        <p class="info" *ngIf="contentData.address">
             {{contentData.address}}
         </p>
-        <p class="phone_number">
+        <p class="phone_number" *ngIf="contentData.phoneNumber">
             <a href="tel:{{contentData.phoneNumber}}">{{contentData.phoneNumber}}</a>
-            <!-- {{contentData.phoneNumber}} -->
         </p>
 
         <p class="remark">

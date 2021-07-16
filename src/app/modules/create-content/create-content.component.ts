@@ -133,6 +133,7 @@ export class CreateContentComponent implements OnInit, OnDestroy {
       this.townshipList = res;
     })
   }
+
   ngOnDestroy() {
     if (this.sub)
       this.sub.unsubscribe();

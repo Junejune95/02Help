@@ -13,16 +13,13 @@ export class ContentCardComponent implements OnInit, OnDestroy {
   
   private sub: Subscription;
 
-
   constructor(private _service: CommonService,) { }
 
   ngOnInit() {
   }
 
   onLikePost(id, status) {
-
     this.sub = this._service.onLikePost(id, status).subscribe((res) => {
-      console.log(res);
       this.onClick.emit(true);
     })
   }
