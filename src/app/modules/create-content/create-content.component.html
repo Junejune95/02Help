@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label>Region</label>
-                <ng-select [items]="regionList" bindLabel="name" bindValue="name" formControlName="region"
+                <ng-select [items]="regionList" bindLabel="name" bindValue="_id" formControlName="region"
                     (change)="onSelectedRegion()" placeholder="Select Region" required>
                 </ng-select>
                 <div *ngIf="submitted && f.region.errors" class="invalid-feedback">
@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-6 form-group">
                 <label>Township</label>
-                <ng-select [items]="townshipList" bindLabel="name" bindValue="name" formControlName="state"
+                <ng-select [items]="townshipList" bindLabel="name" bindValue="_id" formControlName="state"
                     placeholder="Select Township" required>
                 </ng-select>
                 <div *ngIf="submitted && f.state.errors" class="invalid-feedback">

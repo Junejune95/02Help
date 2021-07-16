@@ -59,7 +59,7 @@ export class CreateContentComponent implements OnInit, OnDestroy {
       size: this.formBuilder.array([], [Validators.required]),
       info: [""],
       remark: [""],
-      phone: ["", [Validators.required]],
+      phone: [""],
       address: ["", [Validators.required]],
     }
     );
@@ -99,8 +99,8 @@ export class CreateContentComponent implements OnInit, OnDestroy {
       let value = this.contentForm.value;
 
       let data = {
-        "regionName": value.region,
-        "townshipName": value.state,
+        "regionId": value.region,
+        "townshipId": value.state,
         "status": value.status,
         "plantName": value.name,
         "address": value.address,
