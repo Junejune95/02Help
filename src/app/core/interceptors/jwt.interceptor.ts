@@ -21,7 +21,6 @@ export class JwtInterceptor implements HttpInterceptor {
             || req.headers.has("Content-Type");
 
         const userToken = this.authenticationService.currentToken;
-        console.log(userToken);
         if (ignore) {
             const cloned = req.clone({
                 headers: req.headers.set('Authorization', `Bearer ${userToken}`)

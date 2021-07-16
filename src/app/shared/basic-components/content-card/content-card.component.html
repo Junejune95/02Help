@@ -34,7 +34,7 @@
     </div>
     <div class="card-footer">
         <div class="d-flex justify-content-between">
-            <button class="btn" (click)="onLikePost(contentData._id,'like')">
+            <button class="btn-action" (click)="onLikePost(contentData._id,'like')">
                 <span class="count">{{contentData.metadata.likes}}</span>
                 <div class="icon">
                     <img src="assets/icons/thumbs-up.svg">
@@ -42,7 +42,7 @@
                 <span class="label">OK</span>
 
             </button>
-            <button class="btn">
+            <button class="btn-action">
                 <span class="count">{{contentData.metadata.likes}}</span>
                 <div class="icon">
                     <img src="assets/icons/comment.svg">
@@ -50,13 +50,12 @@
                 <span class="label">Comment</span>
 
             </button>
-            <button class="btn" (click)="onLikePost(contentData._id,'dislike')">
+            <button class="btn-action" (click)="onLikePost(contentData._id,'dislike')">
                 <span class="count">{{contentData.metadata.dislikes}}</span>
                 <div class="icon" *ngIf="contentData.metadata">
                     <img src="assets/icons/thumbs-down.svg">
                 </div>
                 <span class="label">NOT OK</span>
-
             </button>
         </div>
     </div>
