@@ -12,7 +12,7 @@ export class CommonService {
 
   constructor(private http: HttpClient) { }
 
-  onLogin(data:any) {
+  onLogin(data: any) {
     let url = this.baseUrl + "/users";
     return this.http.post(url, data)
   }
@@ -22,24 +22,27 @@ export class CommonService {
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
   }
 
-  getTownship(regionId:String) {
-    let url = this.baseUrl + "/townships?regionName="+regionId;
+  getTownship(regionId: String) {
+    let url = this.baseUrl + "/townships?regionId=" + regionId;
 
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
   }
 
-  onCreateContent(data:any) {
+  onCreateContent(data: any) {
     let url = this.baseUrl + "/posts";
     return this.http.post(url, data)
   }
 
-  onLikePost(id:any,status:String) {
-    let url = this.baseUrl + "/posts/"+id+"/"+status;
-    return this.http.put(url,{});
+  onLikePost(id: any, status: String) {
+    let url = this.baseUrl + "/posts/" + id + "/" + status;
+    return this.http.put(url, {});
   }
 
-  getContentList() {
-    let url = this.baseUrl + "/posts?regionName=Region1&townshipName=Town1"
+  getContentList(regionId: String, townshipId: String, isTodayUpdate: boolean) {
+    let url = this.baseUrl;
+    url += regionId && townshipId ? "/posts?regionId=" + regionId + "&townshipId=" + townshipId + "&tomorrowUpdate=" + isTodayUpdate : "/posts?tomorrowUpdate=" + isTodayUpdate;
+
+
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
   }
 }

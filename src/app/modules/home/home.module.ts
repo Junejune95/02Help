@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { BasicComponentsModule } from "@basic-components/basic-components.module";
 
 const routes: Routes = [
@@ -18,9 +16,6 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    NgSelectModule,
-    ReactiveFormsModule,
-    FormsModule,
     BasicComponentsModule
   ],
   exports: [RouterModule]

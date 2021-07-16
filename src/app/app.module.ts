@@ -12,6 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginComponent } from '@modules/login/login.component';
 import { HeaderNavComponent } from '@modules/header-nav/header-nav.component';
 import { SpinnerLoadingComponent } from './modules/spinner-loading/spinner-loading.component';
+import { CoreModule } from "@core/core.module";
 import { GlobalErrorHandler } from '@app/core/global/global-error-handler';
 
 @NgModule({
@@ -31,9 +32,10 @@ import { GlobalErrorHandler } from '@app/core/global/global-error-handler';
     CommonModule,
     HttpClientModule,
     NgSelectModule,
+    CoreModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
   ],
   bootstrap: [
     AppComponent,

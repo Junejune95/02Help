@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from 'src/app/core/interceptors';
-import { LoaderInterceptor } from 'src/app/core/interceptors/loader.interceptor';
-import { ServerErrorInterceptor } from 'src/app/core/interceptors/server-error.interceptor';
+import { JwtInterceptor } from '@core/interceptors';
+import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
+import { ServerErrorInterceptor } from '@core/interceptors/server-error.interceptor';
 
 
 

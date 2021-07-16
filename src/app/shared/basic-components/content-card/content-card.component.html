@@ -8,7 +8,7 @@
         <div class="d-flex justify-contentData-between mb-2">
             <div class="d-flex flex-column align-items-start">
                 <div class="name">{{contentData.plantName}}</div>
-                <div class="date">{{contentData.createdAt  | date :'M/d/yy, h:mm a'}}</div>
+                <div class="date">{{contentData.createdAt | date :'M/d/yy, h:mm a'}}</div>
 
             </div>
             <div>
@@ -24,7 +24,7 @@
             {{contentData.address}}
         </p>
         <p class="phone_number">
-            <a  href="tel:{{contentData.phoneNumber}}">{{contentData.phoneNumber}}</a>
+            <a href="tel:{{contentData.phoneNumber}}">{{contentData.phoneNumber}}</a>
             <!-- {{contentData.phoneNumber}} -->
         </p>
 
@@ -32,3 +32,32 @@
             {{contentData.remark}}
         </p>
     </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-between">
+            <button class="btn" (click)="onLikePost(contentData._id,'like')">
+                <span class="count">{{contentData.metadata.likes}}</span>
+                <div class="icon">
+                    <img src="assets/icons/thumbs-up.svg">
+                </div>
+                <span class="label">OK</span>
+
+            </button>
+            <button class="btn">
+                <span class="count">{{contentData.metadata.likes}}</span>
+                <div class="icon">
+                    <img src="assets/icons/comment.svg">
+                </div>
+                <span class="label">Comment</span>
+
+            </button>
+            <button class="btn" (click)="onLikePost(contentData._id,'dislike')">
+                <span class="count">{{contentData.metadata.dislikes}}</span>
+                <div class="icon" *ngIf="contentData.metadata">
+                    <img src="assets/icons/thumbs-down.svg">
+                </div>
+                <span class="label">NOT OK</span>
+
+            </button>
+        </div>
+    </div>
+</div>
