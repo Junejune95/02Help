@@ -15,64 +15,12 @@
     </div>
 </div>
 
-<div class="card" *ngFor="let content of contentList">
-    <div class="card-body">
-        <div class="d-flex mb-2">
-            <div class="stauts-box" *ngFor="let status of content.status">
-                {{status}}
-            </div>
-        </div>
-        <div class="d-flex justify-content-between mb-2">
-            <div class="d-flex flex-column align-items-start">
-                <div class="name">{{content.plantName}}</div>
-                <div class="date">{{content.createdAt  | date :'M/d/yy, h:mm a'}}</div>
+<div *ngFor="let content of contentList">
+    <app-content-card [contentData]="content"></app-content-card>
+</div>
 
-            </div>
-            <div>
-                <div *ngFor="let size of content.size;let i=index" class="size">
-                    {{content.size.length-1== i ? size : size +' / ' }}
-                </div>
-            </div>
-        </div>
-        <p class="info">
-            {{content.information}}
-        </p>
-        <p class="info">
-            {{content.address}}
-        </p>
-        <p class="phone_number">
-            {{content.phoneNumber}}
-        </p>
 
-        <p class="remark">
-            {{content.remark}}
-        </p>
-    </div>
-    <div class="card-footer">
-        <div class="d-flex justify-content-between">
-            <button class="btn" (click)="onLikePost('like',content._id)">
-                <span class="count">{{content.metadata.likes}}</span>
-                <div class="icon">
-                    <img src="assets/icons/thumbs-up.svg">
-                </div>
-                <span class="label">OK</span>
-                
-            </button>
-            <button class="btn">
-                <span class="count">{{content.metadata.likes}}</span>
-                <div class="icon">
-                    <img src="assets/icons/comment.svg">
-                </div>
-                <span class="label">Comment</span>
-                
-            </button>
-            <button class="btn">
-                <span class="count">{{content.metadata.likes}}</span>
-                <div class="icon">
-                    <img src="assets/icons/thumbs-down.svg">
-                </div>
-                <span class="label">NOT OK</span>
-            </button>
-        </div>
-    </div>
+
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+    <div class="loader"></div>
 </div>

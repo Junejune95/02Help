@@ -1,0 +1,10 @@
+p.err-mssage {
+    color: #484747;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+button.btn.btn-back {
+    background: #484747;
+    color: white;
+}

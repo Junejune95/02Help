@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { BasicComponentsModule } from "@basic-components/basic-components.module";
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     NgSelectModule,
     ReactiveFormsModule,
     FormsModule,
+    BasicComponentsModule
   ],
   exports: [RouterModule]
 })

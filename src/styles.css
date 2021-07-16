@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
-html,body{
+html,body {
     background-color: #F8F7F7 !important;
+    height: 100%;
+    width: 100%;
 }
 .invalid-feedback {
     display: block !important;
@@ -48,4 +50,18 @@ button.btn.btn-create {
     border: 2px solid #ffffff;
     border-top-color: #000000;
     animation: spinner .8s linear infinite;
+  }
+
+  .loader {
+    border: 5px solid #c3c3c3;
+    border-top: 5px solid #484747;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }

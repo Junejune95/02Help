@@ -8,25 +8,29 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public regionList:any=[];
-  public townshipList:any=[];
+  public regionList: any = [];
+  public townshipList: any = [];
   private sub: Subscription;
-  public selectedRegion:any;
-  public selectedtownship:any;
-  public contentList:any=[];
+  public selectedRegion: any;
+  public selectedtownship: any;
+  public contentList: any = [];
+  public isLoading: boolean = false;
 
-  constructor(private _cservice:CommonService, private _service: CommonService, ) { }
+  constructor(private _cservice: CommonService, private _service: CommonService,) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.getRegionList();
 
   }
 
-  getContentList(){
+  getContentList() {
     this.sub = this._service.getContentList()
-    .subscribe((res) => {
-      this.contentList = res;
-    })
+      .subscribe((res) => {
+        this.contentList = res;
+        this.isLoading = false;
+
+      })
   }
 
   getRegionList() {
@@ -46,8 +50,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  onLikePost(status,id){
-    this._service.onLikePost(id,status).subscribe((res)=>{
+  onLikePost(status, id) {
+    this._service.onLikePost(id, status).subscribe((res) => {
       console.log(res);
     })
   }

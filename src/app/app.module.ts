@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, } from '@angular/common/http';
@@ -12,6 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { LoginComponent } from '@modules/login/login.component';
 import { HeaderNavComponent } from '@modules/header-nav/header-nav.component';
 import { SpinnerLoadingComponent } from './modules/spinner-loading/spinner-loading.component';
+import { GlobalErrorHandler } from '@app/core/global/global-error-handler';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { SpinnerLoadingComponent } from './modules/spinner-loading/spinner-loadi
     HttpClientModule,
     NgSelectModule,
   ],
-  providers: [],
+  providers: [
+    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
+  ],
   bootstrap: [
     AppComponent,
  
