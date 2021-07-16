@@ -31,6 +31,9 @@ export class HeaderNavComponent implements OnInit {
 
   }
 
-  logout(){}
+  logout(){
+    localStorage.clear();
+    this._route.navigateByUrl('/login');
+  }
 
 }

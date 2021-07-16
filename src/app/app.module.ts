@@ -33,7 +33,7 @@ import { GlobalErrorHandler } from '@app/core/global/global-error-handler';
     NgSelectModule,
   ],
   providers: [
-    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
   ],
   bootstrap: [
     AppComponent,
