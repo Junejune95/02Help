@@ -34,14 +34,17 @@
         <div class="d-flex justify-content-between">
             <button class="btn-action" (click)="onLikePost(contentData._id,'like')">
                 <span class="count">{{contentData.metadata.likes}}</span>
-                <div class="icon">
+                <div class="icon" *ngIf="contentData.like==true">
+                    <img src="assets/icons/thumbs-up-fill.svg">
+                </div>
+                <div class="icon" *ngIf="contentData.like==false">
                     <img src="assets/icons/thumbs-up.svg">
                 </div>
                 <span class="label">OK</span>
 
             </button>
             <button class="btn-action" (click)="goComment(contentData.metadata.comments,contentData._id)">
-                <span class="count">{{contentData.metadata.likes}}</span>
+                <span class="count">{{contentData.metadata.comments.length}}</span>
                 <div class="icon">
                     <img src="assets/icons/comment.svg">
                 </div>
@@ -50,7 +53,10 @@
             </button>
             <button class="btn-action" (click)="onLikePost(contentData._id,'dislike')">
                 <span class="count">{{contentData.metadata.dislikes}}</span>
-                <div class="icon" *ngIf="contentData.metadata">
+                <div class="icon" *ngIf="contentData.dislike==true">
+                    <img src="assets/icons/thumbs-down-fill.svg">
+                </div>
+                <div class="icon" *ngIf="contentData.dislike==false">
                     <img src="assets/icons/thumbs-down.svg">
                 </div>
                 <span class="label">NOT OK</span>

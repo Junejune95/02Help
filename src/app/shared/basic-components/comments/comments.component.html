@@ -9,8 +9,8 @@
             </div>
             <div class="message" *ngFor="let msg of comments">
                 <div class="d-flex justify-content-between">
-                    <div class="name">Zune</div>
-                    <div class="date">3:40 AM</div>
+                    <div class="name">{{msg.username}}</div>
+                    <div class="date">{{msg.createDate | date :'M/d/yy, h:mm a'}}</div>
                 </div>
            
                 {{msg.text}}
