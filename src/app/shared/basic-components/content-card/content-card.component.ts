@@ -10,7 +10,10 @@ import { Subscription } from 'rxjs';
 export class ContentCardComponent implements OnInit, OnDestroy {
   @Input() contentData;
   @Output() onClick: any = new EventEmitter<any>();
-  
+  public comments:any;
+  public isComment:boolean=false;
+  public selectedPostId:String;
+
   private sub: Subscription;
 
   constructor(private _service: CommonService,) { }
@@ -24,6 +27,15 @@ export class ContentCardComponent implements OnInit, OnDestroy {
     })
   }
 
+  goComment(comments,id){
+    this.comments=comments;
+    this.isComment=true;
+    this.selectedPostId=id;
+  }
+
+  getMessage(){
+    this.onClick.emit(true);
+  }
   ngOnDestroy() {
     if (this.sub)
       this.sub.unsubscribe();

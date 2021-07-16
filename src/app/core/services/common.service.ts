@@ -41,8 +41,14 @@ export class CommonService {
   getContentList(regionId: String, townshipId: String, isTodayUpdate: boolean) {
     let url = this.baseUrl;
     url += regionId && townshipId ? "/posts?regionId=" + regionId + "&townshipId=" + townshipId + "&tomorrowUpdate=" + isTodayUpdate : "/posts?tomorrowUpdate=" + isTodayUpdate;
-
-
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
+  }
+
+  onCreateComments(message: String, id: String) {
+    let url = this.baseUrl + "/posts/" + id + "/comment";
+    let msg = {
+      "text": message
+    }
+    return this.http.put(url, msg);
   }
 }

@@ -5,7 +5,7 @@
                 {{status}}
             </div>
         </div>
-        <div class="d-flex justify-contentData-between mb-2">
+        <div class="d-flex justify-content-between mb-2">
             <div class="d-flex flex-column align-items-start">
                 <div class="name">{{contentData.plantName}}</div>
                 <div class="date">{{contentData.createdAt | date :'M/d/yy, h:mm a'}}</div>
@@ -40,7 +40,7 @@
                 <span class="label">OK</span>
 
             </button>
-            <button class="btn-action">
+            <button class="btn-action" (click)="goComment(contentData.metadata.comments,contentData._id)">
                 <span class="count">{{contentData.metadata.likes}}</span>
                 <div class="icon">
                     <img src="assets/icons/comment.svg">
@@ -58,3 +58,5 @@
         </div>
     </div>
 </div>
+
+<app-comments *ngIf="isComment" [comments]="comments" [postId]="selectedPostId" (onEmit)="getMessage()"></app-comments>

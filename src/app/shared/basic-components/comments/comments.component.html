@@ -1,0 +1,28 @@
+<div class="modal" (click)="onClickoutside($event)">
+    <div class="d-flex justify-content-center modal-content">
+        <div class="main-content">
+            <div class="empy-comment" *ngIf="comments.length==0">
+                <div class="img">
+                    <img src="assets/icons/empty-comments.svg">
+                </div>
+                <p>No Comments Yet</p>
+            </div>
+            <div class="message" *ngFor="let msg of comments">
+                <div class="d-flex justify-content-between">
+                    <div class="name">Zune</div>
+                    <div class="date">3:40 AM</div>
+                </div>
+           
+                {{msg.text}}
+            </div>
+        </div>
+  
+        <div class="text-message">
+            <div class="input">
+                <input type="text" class="form-control" [(ngModel)]="message" placeholder="Comment">
+            </div>
+            <button class="btn" (click)="onSendMessage()">
+            </button>
+        </div>
+    </div>
+</div>

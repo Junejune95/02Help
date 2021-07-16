@@ -5,10 +5,12 @@ import { ContentsListComponent } from './contents-list/contents-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { CommentsComponent } from './comments/comments.component';
 
 const comLists = [
   ContentCardComponent,
   ContentsListComponent
+  , CommentsComponent
 ];
 @NgModule({
   declarations: [comLists],
@@ -18,7 +20,7 @@ const comLists = [
     ReactiveFormsModule,
     FormsModule
   ],
-  exports:[
+  exports: [
     comLists
   ]
 })

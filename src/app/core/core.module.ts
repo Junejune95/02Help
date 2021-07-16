@@ -14,7 +14,7 @@ import { ServerErrorInterceptor } from '@core/interceptors/server-error.intercep
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true },
   ],
 })
