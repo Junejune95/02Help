@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.submitted = true
     if (this.loginForm.invalid) return;
     else {
-      console.log("fine anyway");
       this.isLoading=true;
       let user = {
         "name": this.loginForm.value.name, 
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.subscription = this._service.onLogin(user)
         .subscribe((res:any) => {
           this._route.navigateByUrl("O2Help/home");
-          console.log(res.token)
           localStorage.setItem("token",res.token),
           localStorage.setItem("username",user.name),
 

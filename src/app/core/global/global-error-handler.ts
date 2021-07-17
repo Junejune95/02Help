@@ -15,7 +15,6 @@ export class GlobalErrorHandler implements ErrorHandler {
     let message:any;
     let stackTrace:any;
     
-    console.log("hello",HttpErrorResponse)
     if (error instanceof HttpErrorResponse) {
       // Server error
       message = errorService.getServerErrorMessage(error);
@@ -25,7 +24,6 @@ export class GlobalErrorHandler implements ErrorHandler {
     } else {
       // Client Error
       message = errorService.getClientErrorMessage(error);
-      console.log(message);
       notifier.showError(message);
     }
     // Always log errors

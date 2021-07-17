@@ -5,11 +5,24 @@
     </div>
     <form [formGroup]="contentForm">
         <div class="row">
-            <div class="col-md-12 form-group">
+            <!-- <div class="col-md-12 form-group">
                 <label>
-                    <input type="checkbox" (change)="isTomorrowUpdate=!isTomorrowUpdate" [value]="isTomorrowUpdate"/>
+                    <input type="checkbox" (change)="isTomorrowUpdate=!isTomorrowUpdate" [value]="isTomorrowUpdate" />
                     Tomorrow Update
                 </label>
+            </div> -->
+            <div class="col-md-6 form-group">
+                <label>Get Date</label>
+                <input type="date" formControlName="getDate" class="form-control input-style"
+                     />
+                <div *ngIf="isTomorrowUpdate" class="invalid-feedback">
+                    <div>Need to Select Date</div>
+                </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Plant Name</label>
+                <input type="text" formControlName="name" class="form-control input-style" placeholder="Enter your name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
             </div>
             <div class="col-md-6 form-group">
                 <label>Region</label>
@@ -60,11 +73,7 @@
                     <div *ngIf="f.size.errors.required">Size is required</div>
                 </div>
             </div>
-            <div class="col-md-6 form-group">
-                <label>Plant Name</label>
-                <input type="text" formControlName="name" class="form-control input-style" placeholder="Enter your name"
-                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-            </div>
+
             <div class="col-md-6 form-group">
                 <label>Phone Number<span class="show-info">(**If more than one phone number separate with
                         comma(","))</span></label>
@@ -89,7 +98,8 @@
             <div class="col-md-12 mb-5 ">
                 <div class="d-flex justify-content-end w-100">
                     <button class="btn btn-cancel">Cancel</button>
-                    <button class="btn btn-create" (click)="onSubmit()" [class.spinner]="isLoading" [disabled]="isLoading">Create</button>
+                    <button class="btn btn-create" (click)="onSubmit()" [class.spinner]="isLoading"
+                        [disabled]="isLoading">Create</button>
                 </div>
             </div>
 

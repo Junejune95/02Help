@@ -57,6 +57,7 @@ export class ContentsListComponent implements OnInit, OnDestroy {
   }
 
   onSelectedTownship() {
+    this.isLoading=true;
     this.getContentList();
   }
   

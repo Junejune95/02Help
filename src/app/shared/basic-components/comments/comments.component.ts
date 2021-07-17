@@ -17,8 +17,6 @@ export class CommentsComponent implements OnInit {
   constructor(private _cservice:CommonService) { }
 
   ngOnInit() {
-    console.log('hello',this.postId);
-    console.log(this.comments);
   }
 
   onSendMessage(){
@@ -30,8 +28,6 @@ export class CommentsComponent implements OnInit {
   }
 
   onClickoutside(e){
-    console.log(e)
-    console.log(e.srcElement.classList);
     if(e.srcElement.classList[0]=='modal')
     this.onEmit.emit(true);
   }

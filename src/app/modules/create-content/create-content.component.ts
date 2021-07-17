@@ -61,6 +61,7 @@ export class CreateContentComponent implements OnInit, OnDestroy {
       remark: [""],
       phone: [""],
       address: ["", [Validators.required]],
+      getDate: [""],
     }
     );
     this.getRegionList();
@@ -108,7 +109,8 @@ export class CreateContentComponent implements OnInit, OnDestroy {
         "information": value.info,
         "remark": value.remark,
         "size": value.size,
-        "tomorrowUpdate": this.isTomorrowUpdate
+        "tomorrowUpdate": value.getDate ? true : false,
+        "getDate": value.getDate,
       };
       this.sub = this._service.onCreateContent(data)
         .subscribe((res: any) => {
@@ -128,7 +130,6 @@ export class CreateContentComponent implements OnInit, OnDestroy {
 
   onSelectedRegion() {
     let regionId = this.contentForm.value.region;
-    console.log(regionId);
     this.sub = this._service.getTownship(regionId).subscribe((res) => {
       this.townshipList = res;
     })

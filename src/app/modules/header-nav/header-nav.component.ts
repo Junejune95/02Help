@@ -26,7 +26,6 @@ export class HeaderNavComponent implements OnInit {
   checkCurrenroute() {
     setTimeout(() => {
       this.currentRoute = this._route.url.split("/");
-      console.log(this.currentRoute)
     }, 100);
 
   }

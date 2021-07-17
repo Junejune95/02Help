@@ -37,7 +37,6 @@ export class NotificationService {
       //   verticalPosition: this.verticalPosition,
       // });
       // this._loc.back();
-      console.log(message);
       if(message.status=="404")
       this._router.navigateByUrl("404");
       else {
