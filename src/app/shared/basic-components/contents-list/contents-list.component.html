@@ -17,7 +17,7 @@
     <app-content-card [contentData]="content" (onClick)="getList()"></app-content-card>
 </div>
 
-<p  class="not-data" *ngIf="contentList.length==0">No Post Yet</p>
+<p class="not-data" *ngIf="contentList.length==0 && !isLoading">No Post Yet</p>
 
 
 
