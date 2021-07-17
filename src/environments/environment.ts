@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://ec2-13-229-234-15.ap-southeast-1.compute.amazonaws.com:5002',
+  // apiUrl:'http://ec2-13-229-234-15.ap-southeast-1.compute.amazonaws.com:5002',
+  apiUrl:'https://covid-19helpmyanmar.com/api',
   enableDebug: false
 };
 
