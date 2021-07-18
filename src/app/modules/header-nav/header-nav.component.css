@@ -62,7 +62,7 @@ button:focus {
 
 .dropdown-menu {
     top: 115% !important;
-    box-shadow: 0px 3px 6px #89BEFF;
+    box-shadow: 0px 3px 6px #eaeaea;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: unset !important;
     border-radius: 0;
@@ -82,11 +82,12 @@ i {
 
 a.dropdown-item.active {
     background: #ffffff;
-    color: #3B8BEB !important;
-    font-weight: 600;
+    color: #C60000 !important;
+    font-weight: 500;
 }
 
 @media (max-width: 991.98px) {
+ 
     li.nav-item.active {
         border-radius: 10px;
         margin-bottom: 10px;
@@ -147,4 +148,11 @@ a#userDropdown {
 button.btn {
     padding: 0;
 
+}
+
+
+a.dropdown-item.active{
+    background: #ffffff;
+    color: #C60000 !important;
+    font-weight: 500;
 }

@@ -7,7 +7,15 @@ import { BasicComponentsModule } from "@basic-components/basic-components.module
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'Oxygen',
+    component: TomorrowUpdateComponent,
+  },
+  {
+    path: 'Flowmeter',
+    component: TomorrowUpdateComponent,
+  },
+  {
+    path: 'Oximeter',
     component: TomorrowUpdateComponent,
   },
 ];

@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from "@core/services/common.service";
 import { Subscription } from 'rxjs';
 
@@ -15,19 +16,26 @@ export class ContentsListComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   public selectedRegion: any;
   public selectedtownship: any;
+  public selectedOrder: any="DESC";
   public contentList: any = [];
   public isLoading: boolean = false;
+  public type:any;
 
-  constructor(private _service: CommonService,) { }
+  constructor(private _service: CommonService,private _route: Router) { }
 
   ngOnInit() {
-    this.isLoading = true;
-    this.getRegionList();
+    setTimeout(() => {
+      this.type = this._route.url.split("/")[3];
+      this.isLoading = true;
+      this.getRegionList();
+    }, 100);
+
+
 
   }
 
   getContentList() {
-    this.sub = this._service.getContentList(this.selectedRegion, this.selectedtownship, this.isUpdate)
+    this.sub = this._service.getContentList(this.selectedRegion, this.selectedtownship, this.isUpdate,this.selectedOrder.toLowerCase(),this.type)
       .subscribe((res) => {
         this.contentList = res;
         this.isLoading = false;
@@ -44,6 +52,7 @@ export class ContentsListComponent implements OnInit, OnDestroy {
   }
 
   onSelectedRegion() {
+    this.townshipList=[];
     let regionId = this.selectedRegion;
     if (regionId)
       this.sub = this._service.getTownship(regionId).subscribe((res) => {
@@ -52,7 +61,8 @@ export class ContentsListComponent implements OnInit, OnDestroy {
   }
 
   getList(){
-    // this.isLoading=true;
+    this.contentList=[];
+    this.isLoading=true;
     this.getContentList();
   }
 
@@ -61,6 +71,10 @@ export class ContentsListComponent implements OnInit, OnDestroy {
     this.getContentList();
   }
   
+  onSelectedOrder(){
+
+    this.getList();
+  }
   ngOnDestroy() {
     if (this.sub)
       this.sub.unsubscribe();

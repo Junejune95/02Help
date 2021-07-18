@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
         <a class="navbar-brand lbl-expand">COVID-19 Help Myanmar</a>
-        <div class="d-flex justify-content-between toogler-wrapper" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <div class="d-flex justify-content-between toogler-wrapper" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
                 ☰
@@ -32,18 +32,35 @@
                         HOME
                     </a>
                 </li>
-                <li class="nav-item" (click)="directRoute('O2Help/find-O2')"
-                    [ngClass]='{"active":currentRoute[2]=="find-O2"}'>
+                <!-- <li class="nav-item" (click)="directRoute('O2Help/other-info/find-O2')"
+                    [ngClass]='{"active":currentRoute[3]=="find-O2"}'>
                     <a class="nav-link">
-                        Find O2
-                    </a>
-                </li>
-                <!-- <li class="nav-item" (click)="directRoute('O2Help/daily')"
-                    [ngClass]='{"active":currentRoute[2]=="daily"}'>
-                    <a class="nav-link">
-                        Daily
+                        OTHER INFO
                     </a>
                 </li> -->
+                <li class="nav-item dropdown" [ngClass]='{"active":currentRoute[2]=="other-info"}'>
+                    <a class="nav-link dropdown-toggle" href="#" id="otherDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> OTHER INFO</a>
+                    <div class="dropdown-menu" aria-labelledby="otherDropdown">
+                        <a class="dropdown-item" (click)="directRoute('O2Help/other-info/Oxygen')"
+                            [ngClass]='{"active":currentRoute[3]=="Oxygen" && currentRoute[2]=="other-info"}'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <span class="demi-bold font-medium pl-2">Oxygen</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="directRoute('O2Help/other-info/Flowmeter')"
+                            [ngClass]='{"active":currentRoute[3]=="Flowmeter" && currentRoute[2]=="other-info"}'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <span class="demi-bold font-medium pl-2">Flowmeter</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="directRoute('O2Help/other-info/Oximeter')"
+                            [ngClass]='{"active":currentRoute[3]=="Oximeter" && currentRoute[2]=="other-info"}'>
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            <span class="demi-bold font-medium pl-2">Oximeter</span>
+                        </a>
+                    </div>
+                </li>
             </ul>
             <div class="dropdown user-dropDown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"

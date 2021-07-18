@@ -13,17 +13,24 @@
             </div> -->
             <div class="col-md-6 form-group">
                 <label>Get Date</label>
-                <input type="date" formControlName="getDate" class="form-control input-style"
-                     />
-                <div *ngIf="isTomorrowUpdate" class="invalid-feedback">
-                    <div>Need to Select Date</div>
-                </div>
+                <input type="date" formControlName="getDate" class="form-control input-style" />
+              
             </div>
             <div class="col-md-6 form-group">
-                <label>Plant Name</label>
-                <input type="text" formControlName="name" class="form-control input-style" placeholder="Enter your name"
-                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <label>Type</label>
+                <select formControlName="type" class="form-control input-style">
+                    <option value="">Select Type</option>
+
+                    <option value="Oxygen">Oxygen</option>
+                    <option value="Flowmeter">Flowmeter</option>
+                    <option value="Oximeter">Oximeter</option>
+                </select>
+                <div *ngIf="f.getDate.value" class="invalid-feedback">
+                    <div>Need to Select Type</div>
+                </div>
             </div>
+
+
             <div class="col-md-6 form-group">
                 <label>Region</label>
                 <ng-select [items]="regionList" bindLabel="name" bindValue="_id" formControlName="region"
@@ -41,6 +48,11 @@
                 <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
                     <div *ngIf="f.state.errors.required">State is required</div>
                 </div>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Plant Name</label>
+                <input type="text" formControlName="name" class="form-control input-style" placeholder="Enter your name"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
             </div>
             <div class="col-md-6 form-group">
                 <label>Status</label>

@@ -3,3 +3,21 @@ p.not-data {
     font-size: 20px;
     color: grey;
 }
+
+.btn-create{
+    width: 100%;
+}
+
+/* .spinner:before{
+    margin-top: 0px !important;
+} */
+
+.custom-selectedBox >select{
+    color: #484747;
+    background: #dcdcdc;
+    border: 0;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 14px;
+    font-weight: 500;
+}

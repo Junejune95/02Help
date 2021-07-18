@@ -52,7 +52,7 @@ export class CreateContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.contentForm = this.formBuilder.group({
       region: [null, [Validators.required]],
-      tommorrowUpdate: [""],
+      type: [""],
       state: [null, [Validators.required,]],
       name: ["", [Validators.required]],
       status: this.formBuilder.array([], [Validators.required]),
@@ -111,7 +111,9 @@ export class CreateContentComponent implements OnInit, OnDestroy {
         "size": value.size,
         "tomorrowUpdate": value.getDate ? true : false,
         "getDate": value.getDate,
+        "type":value.type
       };
+      console.log(data);
       this.sub = this._service.onCreateContent(data)
         .subscribe((res: any) => {
           this.isLoading = false;

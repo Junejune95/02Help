@@ -1,17 +1,32 @@
 <div class="row">
-    <div class="col-md-6 form-group">
+    <div class="col-md-5 form-group">
         <label>Region</label>
         <ng-select [items]="regionList" bindLabel="name" bindValue="_id" (change)="onSelectedRegion()"
             placeholder="Select Region" [(ngModel)]="selectedRegion" required>
         </ng-select>
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-5 form-group">
         <label>Township</label>
-        <ng-select [items]="townshipList" bindLabel="name" bindValue="_id" [(ngModel)]="selectedtownship" (change)="onSelectedTownship()"
-            placeholder="Select Township" required>
+        <ng-select [items]="townshipList" bindLabel="name" bindValue="_id" [(ngModel)]="selectedtownship"
+            (change)="onSelectedTownship()" placeholder="Select Township" required>
         </ng-select>
     </div>
+    <div class="col-md-2 form-group">
+        <div class="d-flex align-items-end justify-content-center h-100">
+            <button class="btn btn-create" (click)="getList()" 
+            [disabled]="isLoading">Search</button>
+        </div>
+    </div>
 </div>
+
+<div class="custom-selectedBox">
+    <select [(ngModel)]="selectedOrder" (change)="onSelectedOrder()">
+        <option value="ASC">ASC</option>
+        <option value="DESC">DESC</option>
+        <option value="LASTED">LASTED</option>
+      </select>
+</div>
+
 
 <div *ngFor="let content of contentList">
     <app-content-card [contentData]="content" (onClick)="getList()"></app-content-card>

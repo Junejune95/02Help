@@ -28,7 +28,7 @@ const routes: Routes = [
           .then(m => m.HomeModule),
       },
       {
-        path: 'find-O2',
+        path: 'other-info',
         loadChildren: () => import('@modules/tomorrow-update/tomorrow-update.module')
           .then(m => m.TomorrowUpdateModule),
       },
