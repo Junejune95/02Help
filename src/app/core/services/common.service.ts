@@ -38,13 +38,13 @@ export class CommonService {
     return this.http.put(url, {});
   }
 
-  getContentList(regionId: String, townshipId: String, isTodayUpdate: boolean, sorting:String, type:String) {
-    let url = this.baseUrl+"/posts?tomorrowUpdate=" + isTodayUpdate +"&sorting="+sorting+"&filter="+type;
-
-    if(regionId)
-    url+= "&regionId="+regionId;
-    else if(townshipId)
-    url+="&townshipId="+townshipId;
+  getContentList(regionId: String, townshipId: String, isTodayUpdate: boolean, sorting: String, type: String) {
+    let url = this.baseUrl + "/posts?tomorrowUpdate=" + isTodayUpdate + "&sorting=" + sorting + "&filter=" + type;
+    console.log(townshipId);
+    if (regionId && !townshipId)
+      url += "&regionId=" + regionId;
+    else if (townshipId && regionId)
+      url += "&regionId=" + regionId + "&townshipId=" + townshipId;
     // url += regionId && townshipId ? "/posts?regionId=" + regionId + "&townshipId=" + townshipId + "&tomorrowUpdate=" + isTodayUpdate : "/posts?tomorrowUpdate=" + isTodayUpdate;
     return this.http.get<any>(url).pipe(map((obj) => obj || []));
   }
